@@ -36,17 +36,13 @@
     return YES;
 }
 
-- (IBAction)onDateEditCancelClicked:(id)sender {
-    DDLogInfo(@"onDateEditCancelClicked");
-    
+- (IBAction)onDateEditCancelClicked:(id)sender {    
     if([self.delegate respondsToSelector:@selector(datePickerCancel:)]) {
 		[self.delegate datePickerCancel:self];
 	}
 }
 
-- (IBAction)onDateEditSaveClicked:(id)sender {
-    DDLogInfo(@"onDateEditSaveClicked");
-    
+- (IBAction)onDateEditSaveClicked:(id)sender {    
     if([self.delegate respondsToSelector:@selector(datePickerSetDate:)]) {
 		[self.delegate datePickerSetDate:self];
 	}
