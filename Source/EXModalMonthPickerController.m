@@ -20,8 +20,9 @@
     [super viewDidLoad];
     
     self.datePicker = [[NTMonthYearPicker alloc] init];
-//    [self.datePicker addTarget:self action:@selector(onDatePicked:) forControlEvents:UIControlEventValueChanged];
+    //    [self.datePicker addTarget:self action:@selector(onDatePicked:) forControlEvents:UIControlEventValueChanged];
     self.datePicker.datePickerMode = NTMonthYearPickerModeMonthAndYear;
+    [self.pickerContainer addSubview:self.datePicker];
     
 	self.coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     self.coverView.userInteractionEnabled = YES;
@@ -33,24 +34,12 @@
 	self.coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.datePicker.date = [NSDate date];
-    
-	for (UIView *subview in self.datePicker.subviews) {
-		subview.frame = self.datePicker.bounds;
-	}
 }
 
-- (void)viewDidUnload {
-	self.coverView = nil;
-    self.datePicker = nil;
-	self.delegate = nil;
-    [super viewDidUnload];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
     self.datePicker.frame = self.pickerContainer.bounds;
-    [self.pickerContainer addSubview:self.datePicker];
 }
 
 - (BOOL)shouldAutorotate {
